@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій блог</title>
+</head>
+<body>
+<h1>Мій блог</h1>
+
+{% load cache %}
+
+<div style="display: flex; gap: 40px;">
+
+    <main>
+        {% for post in posts %}
+            <h2>
+                <a href="{% url 'post_detail' post.id %}">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <p>{{ post.text }}</p>
+            <p>Автор: {{ post.author }}</p>
+            <hr>
+        {% endfor %}
+    </main>
+
+    {% cache 600 sidebar %}
+    <aside>
+        <h3>Мій блог</h3>
+        <p>Ласкаво просимо до мого блогу!</p>
+        <p>Тут ви можете читати пости та залишати коментарі.</p>
+    </aside>
+    {% endcache %}
+
+</div>
+
+</body>
+</html>

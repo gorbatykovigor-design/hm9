@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати коментар</title>
+</head>
+<body>
+
+    <h1>Додати коментар</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Відправити</button>
+    </form>
+
+    <a href="/">На головну</a>
+
+</body>
+</html>

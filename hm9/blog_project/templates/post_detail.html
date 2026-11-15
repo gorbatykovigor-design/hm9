@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+
+    <h1>{{ post.title }}</h1>
+
+    <p>{{ post.text }}</p>
+
+    <p>Автор: {{ post.author }}</p>
+    <p>Дата: {{ post.date }}</p>
+
+    <hr>
+
+    <h2>Коментарі</h2>
+
+    {% for comment in comments %}
+        <div>
+            <p>{{ comment.author }}</p>
+            <p>{{ comment.text }}</p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>Коментарів поки немає</p>
+    {% endfor %}
+
+    <a href="/">На головну</a>
+    <a href="{% url 'add_comment' post.id %}">
+        <button>Додати коментар</button>
+    </a>
+
+</body>
+</html>
